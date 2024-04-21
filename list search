@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple JavaScript Search</title>
+<style>
+  /* Just some basic styling for demonstration */
+  #searchInput {
+    padding: 5px;
+    width: 200px;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+
+<input type="text" id="searchInput" placeholder="Search...">
+<ul id="searchList">
+  <li>Apple</li>
+  <li>Orange</li>
+  <li>Banana</li>
+  <li>Strawberry</li>
+  <li>Mango</li>
+  <li>Pineapple</li>
+</ul>
+
+<script>
+  // Function to perform the search
+  function search() {
+    // Get the input value and convert it to lowercase for case-insensitive search
+    var searchText = document.getElementById('searchInput').value.toLowerCase();
+    // Get the list items
+    var listItems = document.querySelectorAll('#searchList li');
+    
+    // Loop through each list item
+    listItems.forEach(function(item) {
+      var text = item.textContent.toLowerCase();
+      // Check if the item contains the search text
+      if (text.includes(searchText)) {
+        // If it does, display the item
+        item.style.display = 'block';
+      } else {
+        // If it doesn't, hide the item
+        item.style.display = 'none';
+      }
+    });
+  }
+
+  // Attach the search function to the input's keyup event
+  document.getElementById('searchInput').addEventListener('keyup', search);
+</script>
+
+</body>
+</html>
